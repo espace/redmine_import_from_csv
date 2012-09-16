@@ -1,0 +1,6 @@
+# English strings go here for Rails i18n
+en:
+  Import_label: "Import issues from CSV"
+  error_bad_csv_format: "Bad file format, Please consider the following format (Story ID, Story, Notes, Estimation (man days)) "
+  required_format: "Required Format: (Story ID, Story, Notes, Estimation (man days))"
+  format_hint: "Hint: The first line in the file will be ignored"
