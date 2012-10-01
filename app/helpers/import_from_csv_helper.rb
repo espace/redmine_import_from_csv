@@ -11,4 +11,10 @@ module ImportFromCsvHelper
     final_message << %{<p>#{l(:required_format)}</p>}
     return final_message
   end
+
+  def has_story_tracker?(project)
+    found=project.trackers.find_by_name("Story")
+    return found.id  if found
+  end
+
 end

@@ -1,3 +1,5 @@
 = import_from_csv
 
-Description goes here
+This is a plugin to add the feature of importing issues in CSV format.
+For team leader role, it shows a link to the side bar in isues page that redirects to select csv file form.
+It checks that CSV file and Expected daily working hours' values are entered before proceeding.

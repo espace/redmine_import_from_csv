@@ -1,24 +1,13 @@
-<% form_for :dump, :url=>{:controller=>"import_from_csv", :action=>"csv_import"}, :html => { :multipart => true,:id=>"my-form" } do |f| %>
+<%= form_for :dump, :url=>csv_import_import_from_csv_index_path, 
+:html => { :multipart => true,:id=>"my-form" } do |f| %>
   <input type="hidden" name="project_id" value="<%=@project.id%>" />
 	<fieldset>
     <p><label for="dump_file"><h2>Select a CSV File :</h2><%=l(:required_format)%><h4 style="border-bottom:none"><%=l(:format_hint)%></h4></label></p>
-		<p><%= f.file_field :file %> As: <%= f.select :tracker_id, @project.trackers.collect {|t| [t.name, t.id]},{:selected=>has_story_tracker?(@project)} %></p>
+		<p><%= f.file_field :file %> As: 
+      <%= f.select :tracker_id, 
+      @project.trackers.collect {|t| [t.name, t.id]},{:selected=>has_story_tracker?(@project)} %>
+    </p>
 	  <p>Expected daily working hours:<%= f.text_field :daily_working_hrs,:value=>"7",:size=>2 %></p>
 	  <p><%= submit_tag 'Import' %></p>
 	</fieldset>
 <% end %>
-
-<script>
-  document.observe('dom:loaded', function() {
-    Event.observe('my-form', 'submit', function(e){ 		 
-      if ($('dump_file').value==""){
-				Event.stop(e);
-				alert('Please, Select CSV file');
-			}
-			else if($('dump_daily_working_hrs').value==""){
-				Event.stop(e);
-				alert('Please, Enter Expected daily working hours');
-			}
-    });
-  });
-</script>
