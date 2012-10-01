@@ -59,13 +59,13 @@ class ImportFromCsvController < ApplicationController
       else
         flash[:error]=format_error(done,total,error_messages)
       end
-      redirect_to :controller=>"issues",:action=>"index",:project_id=>@project.id
+      redirect_to :controller=>"issues",:action=>"index",:project_id=>@project.identifier
     end
   end
   
   def redirect_with_error(err,project)
     flash[:error]=err
-    redirect_to :controller=>"import_from_csv",:action=>"index",:project_id=>project.id
+    redirect_to :controller=>"import_from_csv",:action=>"index",:project_id=>project.identifier
   end
  
   def get_project
