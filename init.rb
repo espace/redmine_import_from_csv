@@ -1,29 +1,23 @@
-# Include hook code here
 require 'redmine'
-#require 'dispatcher'
 # Hooks
-require_dependency 'my_hooks'
+require_dependency 'import_from_csv_hooks'
+require File.dirname(__FILE__) + '/test/factories.rb'
 
-Rails.configuration.to_prepare do
-  require_dependency 'issue'
-  require 'issue_patch'
-  Issue.send( :include, IssuePatch)
-end
-
-Redmine::Plugin.register :add_report_bug_link do
-  name 'Add Report Bug Link'
+Redmine::Plugin.register :redmine_import_from_csv do
+  name 'Redmine Import From Csv plugin'
   author 'Basayel Said'
-  description 'As a team member, can click on a "Open an Issue on this Story" link in the side bar of any story.'
-  version '0.0.1' 
-end
-
-Redmine::AccessControl.map do |map|
-  map.project_module :issue_tracking do |map|
-    map.permission :report_bug, {:issues =>:my_new}
+  description 'As a TL, can upload csv file with stories to automatically add stories'
+  version '0.0.1'
+  project_module :issue_tracking do
+    permission :import_issues_from_csv, {:import_from_csv => [:index, :csv_import]} ,:require => :member
   end
 end
 
-#fix required to make the plugin work in devel mode with rails 2.2
-Rails.configuration.autoload_paths.each do |path|
-  ActiveSupport::Dependencies.autoload_once_paths.delete(path)
-end
+#Redmine::AccessControl.map do |map|
+#  map.project_module :issue_tracking do |map|
+#    map.permission :import_from_csv, {:import_from_csv => [:index, :csv_import]}
+#  end
+#end
+
+#Redmine::MenuManager.map :project_menu do |menu|
+#  menu.push :import_from_csv, { :controller => 'import_from_csv', :action => 'index' }, :caption => 'Import from CSV', :after => :activity, :param => :project_id
