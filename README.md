@@ -1,6 +1,6 @@
 # Import from CSV
 
-Import from CSV is a redmine plugin to add the feature of importing issues in CSV format.
+Redmine_import_from_CSV is a redmine plugin to add the feature of importing issues in CSV format.
 As a team member with add issue permission, it shows a link to the side bar in isues page that redirects to select csv file form.
 It checks that CSV file and Expected daily working hours' values are entered before proceeding.
 
@@ -18,5 +18,8 @@ Compatible with redmine 2.1 and Rails 3.
     git clone git://github.com/espace/redmine_import_from_csv.git
   ```
 
+##License
+Redmine_import_from_CSV is provided under the MIT License.
+
 ##Credits
-redmine_import_from_CSV is a redmine plugin by eSpace  http://www.espace.com.eg/.
+Redmine_import_from_CSV is a redmine plugin developed by eSpace  http://www.espace.com.eg/.
