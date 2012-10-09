@@ -6,7 +6,7 @@ require File.dirname(__FILE__) + '/test/factories.rb'
 Redmine::Plugin.register :redmine_import_from_csv do
   name 'Redmine Import From Csv plugin'
   author 'Basayel Said'
-  description 'As a TL, can upload csv file with stories to automatically add stories'
+  description 'As a team member with add issue permission, can upload csv file with stories to automatically add stories'
   version '0.0.1'
   project_module :issue_tracking do
     permission :import_issues_from_csv, {:import_from_csv => [:index, :csv_import]} ,:require => :member
