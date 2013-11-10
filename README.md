@@ -8,15 +8,16 @@ It checks that CSV file and Expected daily working hours' values are entered bef
 
 ## Installation
 
-Compatible with redmine 2.1 and Rails 3.
-
-### Setup on debian/ubuntu
+* Compatible with redmine 2.1 and Rails 3.
+* Clons the plugin into the plugins directory
 
   ```
     cd redmine-2.1.0
     cd plugins/
     git clone git://github.com/espace/redmine_import_from_csv.git
   ```
+  
+* You'll need to enable "Import issues from csv"  under "Issure Tracking" section in Administration >  roles and permissions
 
 ##License
 Redmine_import_from_CSV is provided under the MIT License.
