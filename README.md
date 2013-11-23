@@ -23,4 +23,6 @@ It checks that CSV file and Expected daily working hours' values are entered bef
 Redmine_import_from_CSV is provided under the MIT License.
 
 ##Credits
-Redmine_import_from_CSV is a redmine plugin developed by eSpace  http://www.espace.com.eg/.
+* [modsaid](https://github.com/modsaid)
+* [basayel](https://github.com/basayel)
+* [Yasmine-Gaber](https://github.com/Yasmine-Gaber)
