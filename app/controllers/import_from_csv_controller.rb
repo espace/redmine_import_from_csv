@@ -21,23 +21,23 @@ class ImportFromCsvController < ApplicationController
       redirect_with_error error, @project
     else
       begin
-        done=0;total=0
-        error_messages=[]
-        tracker=@project.trackers.find(params[:dump][:tracker_id])
+        done = 0;total = 0
+        error_messages = []
+        tracker = @project.trackers.find(params[:dump][:tracker_id])
         infile = params[:dump][:file].read
         parsed_file = CSV.parse(infile)
         parsed_file.each_with_index  do |row,index|
           story_id=row[0];subject=row[1]
           description=row[2];estimated_hrs=row[3]
-          next if index==0
-          total=total+1
-          issue=Issue.new
-          issue.project=@project
-          issue.author=User.current
-          issue.tracker=tracker
-          issue.text_id=story_id if issue.has_attribute? 'text_id'
-          issue.subject=subject
-          issue.description=(subject.nil? ? "" : subject)+(description.nil? ? "" : "\n\nh3. Notes\n\n"+description)   
+          next if index == 0
+          total = total+1
+          issue = Issue.new
+          issue.project = @project
+          issue.author = User.current
+          issue.tracker = tracker
+          issue.text_id = story_id if issue.has_attribute? 'text_id'
+          issue.subject = subject
+          issue.description = description
           issue.estimated_hours=estimated_hrs.to_f * params[:dump][:daily_working_hrs].to_f unless estimated_hrs.blank? and params[:dump][:daily_working_hrs].blank?
           if issue.save
             done=done+1
@@ -59,7 +59,7 @@ class ImportFromCsvController < ApplicationController
         redirect_with_error e.message, @project
         return
       end
-      if done==total
+      if done == total
         flash[:notice]="CSV Import Successful, #{done} new issues have been created"
       else
         flash[:error]=format_error(done,total,error_messages)
